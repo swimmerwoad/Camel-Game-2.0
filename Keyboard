@@ -1,0 +1,72 @@
+package tk.swimmerwoad.CamelGame.input;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import tk.swimmerwoad.CamelGame.Game;
+import tk.swimmerwoad.CamelGame.Game.State;
+
+public class Keyboard implements KeyListener{
+	
+	private boolean[] keys = new boolean[120];
+	public boolean up;
+	public boolean down;
+	public boolean left;
+	public boolean right;
+  public boolean kup;
+  public boolean kdown;
+  public boolean kleft;
+  public boolean kright;
+  public boolean a;
+  public boolean b;
+  public boolean s;
+	public boolean inv;
+	public boolean menu;
+	public boolean edit;
+  public int stage = 0;
+
+	
+	@SuppressWarnings("static-access")
+	public void update(){
+		up = keys[KeyEvent.VK_W];
+		down = keys[KeyEvent.VK_S];
+		left = keys[KeyEvent.VK_A];
+		right = keys[KeyEvent.VK_D];
+                kup = keys[KeyEvent.VK_UP];
+                kdown = keys[KeyEvent.VK_DOWN];
+                kleft = keys[KeyEvent.VK_LEFT];
+                kright = keys[KeyEvent.VK_RIGHT];
+                a = keys[KeyEvent.VK_A];
+                b = keys[KeyEvent.VK_B];
+                s = keys[KeyEvent.VK_S];
+		inv = keys[KeyEvent.VK_E];
+		menu = keys[KeyEvent.VK_ESCAPE];
+		edit = keys[KeyEvent.VK_G];
+		if(edit && Game.level == Game.level.FTHouse){
+			Game.state = State.Edit;
+		}
+                if(kup && (stage == 0 || stage == 1))stage++;
+                if(kdown && (stage == 2 || stage == 3))stage++;
+                if(kleft && (stage == 4 || stage == 6))stage++;
+                if(kright && (stage == 5 || stage == 7))stage++;
+                if(a && stage == 8)stage++;
+                if(b && stage == 9)stage++;
+                if(s && (stage == 10 || stage == 11)) tk.swimmerwoad.CamelGame.inventory.Gold.amount += 1000;
+                if(up || down || left || right || inv || menu || edit){
+                    stage = 0;
+                }
+	}
+
+	public void keyTyped(KeyEvent e) {
+		
+	}
+
+	public void keyPressed(KeyEvent e) {
+		keys[e.getKeyCode()] = true;
+	}
+
+	public void keyReleased(KeyEvent e) {
+		keys[e.getKeyCode()] = false;
+	}
+
+}
