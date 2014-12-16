@@ -13,17 +13,17 @@ public class Keyboard implements KeyListener{
 	public boolean down;
 	public boolean left;
 	public boolean right;
-  public boolean kup;
-  public boolean kdown;
-  public boolean kleft;
-  public boolean kright;
-  public boolean a;
-  public boolean b;
-  public boolean s;
+        public boolean kup;
+        public boolean kdown;
+        public boolean kleft;
+        public boolean kright;
+        public boolean a;
+        public boolean b;
+        public boolean s;
 	public boolean inv;
 	public boolean menu;
 	public boolean edit;
-  public int stage = 0;
+        public int stage = 0;
 
 	
 	@SuppressWarnings("static-access")
@@ -45,16 +45,16 @@ public class Keyboard implements KeyListener{
 		if(edit && Game.level == Game.level.FTHouse){
 			Game.state = State.Edit;
 		}
-                if(kup && (stage == 0 || stage == 1))stage++;
-                if(kdown && (stage == 2 || stage == 3))stage++;
-                if(kleft && (stage == 4 || stage == 6))stage++;
-                if(kright && (stage == 5 || stage == 7))stage++;
-                if(a && stage == 8)stage++;
-                if(b && stage == 9)stage++;
-                if(s && (stage == 10 || stage == 11)) tk.swimmerwoad.CamelGame.inventory.Gold.amount += 1000;
-                if(up || down || left || right || inv || menu || edit){
-                    stage = 0;
-                }
+                //if(kup && (stage == 0 || stage == 1))stage++;
+                //if(kdown && (stage == 2 || stage == 3))stage++;
+                //if(kleft && (stage == 4 || stage == 6))stage++;
+                //if(kright && (stage == 5 || stage == 7))stage++;
+                //if(a && stage == 8)stage++;
+                //if(b && stage == 9)stage++;
+                //if(s && (stage == 10 || stage == 11)) tk.swimmerwoad.CamelGame.inventory.Gold.amount += 1000;
+                //if(up || down || left || right || inv || menu || edit){
+                //    stage = 0;
+                //}
 	}
 
 	public void keyTyped(KeyEvent e) {
